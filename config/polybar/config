@@ -1,0 +1,158 @@
+[colors]
+accent = #5294E2
+cpu0 = #75A1D6
+cpu1 = #5294E2
+cpu2 = #0075FF
+
+[bar/top]
+bottom = false
+width = 100%
+height = 25
+
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+
+background = #1c1c1c
+foreground = #eefafafa
+
+overline-size = 3
+overline-color = ${colors.accent}
+underline-size = 3
+underline-color = ${colors.accent}
+
+;border-color = #ff0000
+;border-top = 3
+;border-top-color = #63C1FF
+;border-bottom = 3
+;border-bottom-color = #63C1FF
+;border-size = 1
+;border-bottom-size = 0
+
+spacing = 3
+padding-right = 0
+padding-left = 0
+module-margin = 5
+
+font-0 = "NotoSans-Regular:size=8;0"
+font-1 = "Unifont:size=5;0"
+font-2 = "FontAwesome:size=8;0"
+font-3 = "UW-Ttyp0:size=14;0"
+
+modules-left = i3
+modules-center = cpu
+modules-right = pavolume wired-network clock
+fixed-center = true
+
+tray-position = right
+tray-background = ${colors.accent}
+
+wm-restack = i3
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+pin-workspaces = true
+
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-default = 
+
+label-dimmed-underline = ${root.background}
+
+label-focused = %icon%  %name%
+label-focused-foreground = #f3f3f3
+label-focused-background = #3f3f3f
+;label-focused-underline = #${colors.accent}
+;label-focused-underline = #9f78e1
+label-focused-font = 1
+label-focused-padding = 4
+
+label-unfocused = %icon%  %name%
+;label-unfocused-underline = #1C1C1C
+label-unfocused-font = 1
+label-unfocused-padding = 4
+
+label-urgent = %icon%  %name%
+label-urgent-foreground = #000000
+label-urgent-background = #bd2c40
+;label-urgent-underline = #9b0a20
+label-urgent-font = 1
+label-urgent-padding = 4
+
+label-visible = %icon%  %name%
+label-visible-foreground = #55ffffff
+label-visible-font = 1
+label-visible-padding = 4
+
+
+[module/cpu]
+type = internal/cpu
+interval = 1.5
+
+format = <label> <ramp-coreload>
+
+label = 
+label-font = 1
+label-foreground = #99
+
+ramp-coreload-0 = ▁
+ramp-coreload-0-font = 2
+ramp-coreload-0-foreground = ${colors.cpu0}
+ramp-coreload-1 = ▂
+ramp-coreload-1-font = 2
+ramp-coreload-1-foreground = ${colors.cpu0}
+ramp-coreload-2 = ▃
+ramp-coreload-2-font = 2
+ramp-coreload-2-foreground = ${colors.cpu0}
+ramp-coreload-3 = ▄
+ramp-coreload-3-font = 2
+ramp-coreload-3-foreground = ${colors.cpu0}
+ramp-coreload-4 = ▅
+ramp-coreload-4-font = 2
+ramp-coreload-4-foreground = ${colors.cpu1}
+ramp-coreload-5 = ▆
+ramp-coreload-5-font = 2
+ramp-coreload-5-foreground = ${colors.cpu1}
+ramp-coreload-6 = ▇
+ramp-coreload-6-font = 2
+ramp-coreload-6-foreground = ${colors.cpu2}
+ramp-coreload-7 = █
+ramp-coreload-7-font = 2
+ramp-coreload-7-foreground =${colors.cpu2}
+
+[module/wired-network]
+type = internal/network
+interface = enp33s0
+interval = 2.0
+
+label-connected = %local_ip%
+label-disconnected = Ethernet disconnected
+label-disconnected-foreground = #66
+
+[module/clock]
+type = internal/date
+interval = 5
+format-padding = 2
+format-foreground = #fff
+date = %H:%M
+
+[module/kernel]
+type = custom/script
+interval = 60
+label = %output%
+exec = ~/.config/polybar/kernel.sh
+
+[module/pavolume]
+type = custom/script
+interval = 1
+label = %output%
+label-font = 1
+
+exec = ~/.config/polybar/pavolume.sh
+click-right = exec pavucontrol
+click-left = ~/.config/polybar/pavolume.sh --togmute
+scroll-up = pamixer --increase 5
+scroll-down = pamixer --decrease 5

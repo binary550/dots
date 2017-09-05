@@ -1,0 +1,15 @@
+print_info()  {
+	info line_break
+
+	info "OS" distro
+	info "Shell" shell
+	info "WM" wm
+	info "CPU" cpu
+	info "GPU" gpu
+}
+
+os_arch="off"
+cpu_cores="off"
+gpu_brand="off"
+ascii_distro="arch_small"
+ascii_colors=(4 6 4 8 4 6)

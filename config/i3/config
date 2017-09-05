@@ -1,0 +1,159 @@
+# ..........
+# BASE
+# ..........
+
+set $mod Mod1
+set $up l
+set $down k
+set $left j
+set $right semicolon
+
+font pango:monospace 8
+floating_modifier $mod
+
+# change focus
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal + vertical
+bindsym $mod+h split h
+bindsym $mod+v split v
+
+# fullscreen, layouts and floating + focus
+bindsym $mod+f fullscreen toggle
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+
+# workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+
+# restart and exit
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m '' -b 'EXIT I3' 'i3-msg exit'"
+
+# ..............................................................
+# CUSTOM CUSTOM CUSTOM CUSTOM CUSTOM CUSTOM CUSTOM CUSTOM CUSTOM
+# ..............................................................
+
+# ..........
+# WAL
+# ..........
+set_from_resource $fg i3wm.color7
+set_from_resource $bg i3wm.color2
+set_from_resource $rs1 i3wm.color9
+# class                 border  backgr. text indicator child_border
+client.focused          $bg     $bg     $bg  $bg       $bg
+client.focused_inactive $bg     $bg     $bg  $bg       $bg
+client.unfocused        $bg     $bg     $bg  $bg       $bg
+client.urgent           $bg     $bg     $fg  $bg       $bg
+client.placeholder      $bg     $bg     $fg  $bg       $bg
+client.background       $bg
+
+# ..........
+# BAR
+# ..........
+
+#bar {
+#	position top
+#        status_command i3status --config ~/.config/i3bar/config
+#	separator_symbol "  |  "
+#	
+#	colors {
+#        	background #000000
+#        	statusline #ffffff
+#        	separator $rs1
+#
+#        	focused_workspace  $rs1 #285577 #ffffff
+#        	active_workspace   #333333 #5f676a #ffffff
+#        	inactive_workspace #333333 #222222 #888888
+#        	urgent_workspace   #2f343a #900000 #ffffff
+#        	binding_mode       #2f343a #900000 #ffffff
+#	}
+#}
+
+# ..........
+# GAPS
+# ..........
+gaps inner 4
+gaps outer 3
+
+# ..........
+# BIND
+# ..........
+bindsym $mod+Return exec lxterminal
+bindsym $mod+Shift+q kill
+bindsym $mod+d exec rofi -show drun -font "UW Ttyp0 14"
+bindsym $mod+t exec thunar
+
+
+bindsym $mod+Shift+Return exec lxterminal -t lxterm_floating
+bindsym XF86AudioRaiseVolume exec pamixer --increase 5
+bindsym XF86AudioLowerVolume exec pamixer --decrease 5
+bindsym XF86AudioMute exec pamixer -t
+
+# ..........
+# WINDOWS
+# ..........
+new_window pixel 2
+new_float pixel 2
+
+for_window [class="Steam"] floating enable
+for_window [class="Thunar"] floating enable
+for_window [title="Steam"] floating disable
+for_window [title="lxterm_floating"] floating enable
+for_window [title="lxterm_floating"] border normal 2
+
+assign [class="qutebrowser"] 2
+assign [class="Steam"] 3
+assign [class="discord"] 5
+
+# ..........
+# AUTOEXEC
+# ..........
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+#exec compton
+
+# ..........
+# WALLPAPER
+# ..........
+exec_always feh --bg-scale ~/pictures/background/background.jpg
