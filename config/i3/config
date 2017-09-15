@@ -2,7 +2,7 @@
 # BASE
 # ..........
 
-set $mod Mod1
+set $mod Mod4
 set $up l
 set $down k
 set $left j
@@ -78,16 +78,6 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m '' -b 'EXIT I3' 'i3-msg exit'
 # ..........
 # WAL
 # ..........
-set_from_resource $fg i3wm.color7
-set_from_resource $bg i3wm.color2
-set_from_resource $rs1 i3wm.color9
-# class                 border  backgr. text indicator child_border
-client.focused          $bg     $bg     $bg  $bg       $bg
-client.focused_inactive $bg     $bg     $bg  $bg       $bg
-client.unfocused        $bg     $bg     $bg  $bg       $bg
-client.urgent           $bg     $bg     $fg  $bg       $bg
-client.placeholder      $bg     $bg     $fg  $bg       $bg
-client.background       $bg
 
 # ..........
 # BAR
@@ -151,7 +141,6 @@ assign [class="discord"] 5
 # AUTOEXEC
 # ..........
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-#exec compton
 
 # ..........
 # WALLPAPER
