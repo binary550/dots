@@ -111,7 +111,7 @@ gaps outer 3
 # BIND
 # ..........
 bindsym $mod+Return exec lxterminal
-bindsym $mod+Shift+q kill
+bindsym $mod+Shift+a kill
 bindsym $mod+d exec rofi -show drun -font "UW Ttyp0 14"
 bindsym $mod+t exec thunar
 
