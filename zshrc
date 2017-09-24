@@ -105,3 +105,5 @@ if [ $TERM = "xterm" ]
 	clear
 	neofetch
 	fi
+
+export TERM=xterm-256color
