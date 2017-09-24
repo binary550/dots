@@ -151,7 +151,7 @@ assign [class="discord"] 5
 # AUTOEXEC
 # ..........
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-#exec compton
+exec xset s off -dpms
 
 # ..........
 # WALLPAPER
