@@ -136,7 +136,7 @@ label-disconnected-foreground = #66
 type = internal/date
 interval = 5
 format-padding = 2
-format-foreground = #fff
+format-foreground = ${colors.accent}
 date = %H:%M
 
 [module/kernel]
